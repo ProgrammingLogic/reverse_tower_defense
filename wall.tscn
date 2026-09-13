@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://6a6bp7lv5pry"]
+
+[ext_resource type="Texture2D" uid="uid://bu7wfhi1ydpo1" path="res://wall.png" id="1_xxgf6"]
+
+[node name="Wall" type="Sprite2D" unique_id=757881381]
+rotation = 1.5707964
+texture = ExtResource("1_xxgf6")

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://myc4n48bao4p"]
+
+[ext_resource type="Texture2D" uid="uid://bttl0obj6ahkb" path="res://archer_tower.png" id="1_u0ma8"]
+
+[node name="ArcherTower" type="Sprite2D" unique_id=827368722]
+texture = ExtResource("1_u0ma8")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1523690560]
+vertices = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

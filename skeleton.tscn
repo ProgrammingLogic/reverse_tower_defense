@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ckethcuhcs77b"]
+
+[ext_resource type="Texture2D" uid="uid://sxxyy3bahade" path="res://skeleton.png" id="1_crlql"]
+[ext_resource type="Script" uid="uid://b4kd5iy6bldoc" path="res://skeleton.gd" id="1_plk42"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0yqr"]
+radius = 16.0
+height = 64.0
+
+[node name="Skeleton" type="CharacterBody2D" unique_id=1954159219]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_plk42")
+movement_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276902268]
+texture = ExtResource("1_crlql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=669657283]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_x0yqr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1607181411]
+unique_name_in_owner = true
+target_desired_distance = 6.0
+path_postprocessing = 1
+simplify_path = true

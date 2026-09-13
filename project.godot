@@ -11,13 +11,33 @@ config_version=5
 [application]
 
 config/name="Reverse Tower Defense"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*uid://ds6pqsbmgt86g"
+
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[global_group]
+
+defense=""
+hostile=""
+
+[layer_names]
+
+2d_physics/layer_1="Path"
+2d_navigation/layer_1="Path"
+2d_physics/layer_2="Wall"
+2d_navigation/layer_2="Obstacle"
+2d_physics/layer_3="Player"
 
 [physics]
 
