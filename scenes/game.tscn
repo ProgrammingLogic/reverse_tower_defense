@@ -74,6 +74,51 @@ navigation_point = NodePath("NavigationPoint")
 [node name="NavigationPoint" type="Node2D" parent="Defense" unique_id=71646369]
 position = Vector2(-40.997635, 1.0934348)
 
+[node name="Defense2" parent="." unique_id=120143958 node_paths=PackedStringArray("navigation_point") instance=ExtResource("3_iywne")]
+unique_name_in_owner = true
+position = Vector2(428.99997, 276.99994)
+scale = Vector2(0.99999994, 0.99999994)
+navigation_point = NodePath("NavigationPoint")
+
+[node name="NavigationPoint" type="Node2D" parent="Defense2" unique_id=84371101]
+position = Vector2(2.1026654, 44.99538)
+
+[node name="Defense3" parent="." unique_id=1695270609 node_paths=PackedStringArray("navigation_point") instance=ExtResource("3_iywne")]
+unique_name_in_owner = true
+position = Vector2(432.99997, 127.999985)
+scale = Vector2(0.99999994, 0.99999994)
+navigation_point = NodePath("NavigationPoint")
+
+[node name="NavigationPoint" type="Node2D" parent="Defense3" unique_id=1947688978]
+position = Vector2(2.1026654, 44.99538)
+
+[node name="Defense4" parent="." unique_id=1910119794 node_paths=PackedStringArray("navigation_point") instance=ExtResource("3_iywne")]
+unique_name_in_owner = true
+position = Vector2(527.99994, 149)
+scale = Vector2(0.99999994, 0.99999994)
+navigation_point = NodePath("NavigationPoint")
+
+[node name="NavigationPoint" type="Node2D" parent="Defense4" unique_id=2041817855]
+position = Vector2(-0.16187549, -70.99983)
+
+[node name="Defense5" parent="." unique_id=2131559361 node_paths=PackedStringArray("navigation_point") instance=ExtResource("3_iywne")]
+unique_name_in_owner = true
+position = Vector2(527, 264)
+scale = Vector2(0.99999994, 0.99999994)
+navigation_point = NodePath("NavigationPoint")
+
+[node name="NavigationPoint" type="Node2D" parent="Defense5" unique_id=743988224]
+position = Vector2(-0.16187549, -70.99983)
+
+[node name="Defense6" parent="." unique_id=1831168308 node_paths=PackedStringArray("navigation_point") instance=ExtResource("3_iywne")]
+unique_name_in_owner = true
+position = Vector2(528, 383)
+scale = Vector2(0.99999994, 0.99999994)
+navigation_point = NodePath("NavigationPoint")
+
+[node name="NavigationPoint" type="Node2D" parent="Defense6" unique_id=1907784701]
+position = Vector2(-0.16187549, -70.99983)
+
 [node name="SpawnPoint" type="Node2D" parent="." unique_id=8204299]
 unique_name_in_owner = true
 position = Vector2(15, 191)

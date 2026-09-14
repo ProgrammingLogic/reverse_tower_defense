@@ -15,6 +15,7 @@ var health: Health:
 		health = new_health
 		health.hurt.connect(_on_update)
 		health.healed.connect(_on_update)
+		_on_update(0)
 @export var show_numbers := true:
 	set(new_show_numbers):
 		show_numbers = new_show_numbers

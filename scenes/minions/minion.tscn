@@ -4,17 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://sxxyy3bahade" path="res://scenes/minions/skeleton.png" id="2_r2x4u"]
 [ext_resource type="Script" uid="uid://bnsmh8qngwdq7" path="res://components/state_machine.gd" id="3_182tw"]
 [ext_resource type="Script" uid="uid://bcqoj3jke71gu" path="res://scenes/minions/advance_state.gd" id="4_7llsn"]
-[ext_resource type="Script" uid="uid://dl7xj2fbxmxqg" path="res://components/state.gd" id="5_qjbbv"]
+[ext_resource type="Script" uid="uid://dy7vqqcjgfios" path="res://scenes/minions/attack_state.gd" id="5_yg3ha"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0yqr"]
 radius = 16.0
 height = 64.0
 
-[node name="Minion" type="CharacterBody2D" unique_id=1954159219]
+[node name="Minion" type="CharacterBody2D" unique_id=1954159219 groups=["minion"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_yg3ha")
-movement_speed = 200.0
+movement_speed = 150.0
+speed_offset_range = Vector2(-10, 10)
+destination_offset_range_x = Vector2(-5, 5)
+destination_offset_range_y = Vector2(-5, 5)
+attack_cooldown = 0.2
+attack_delay_range = Vector2(0.4, 0.8)
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276902268]
 texture = ExtResource("2_r2x4u")
@@ -36,11 +42,16 @@ default_state = NodePath("AdvanceState")
 metadata/_custom_type_script = "uid://bnsmh8qngwdq7"
 
 [node name="AdvanceState" type="Node" parent="StateMachine" unique_id=1150361800 node_paths=PackedStringArray("minion")]
+unique_name_in_owner = true
 script = ExtResource("4_7llsn")
 minion = NodePath("../..")
 metadata/_custom_type_script = "uid://dl7xj2fbxmxqg"
 
-[node name="AttackState" type="Node" parent="StateMachine" unique_id=758063158]
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=758063158 node_paths=PackedStringArray("minion")]
 unique_name_in_owner = true
-script = ExtResource("5_qjbbv")
+script = ExtResource("5_yg3ha")
+minion = NodePath("../..")
 metadata/_custom_type_script = "uid://dl7xj2fbxmxqg"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=332260675]
+unique_name_in_owner = true

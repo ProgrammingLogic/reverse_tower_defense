@@ -20,6 +20,7 @@ func _ready() -> void:
 	health.max_value = max_health
 	health.value = max_health
 	healthbar.health = health
+	health.killed.connect(_on_killed)
 	assert(is_instance_valid(navigation_point))
 
 ## Executed when [member Defense.health]'s [signal Health.killed] is emitted.

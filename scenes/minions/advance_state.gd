@@ -17,13 +17,31 @@ func on_target_update(target: Defense) -> void:
 	if not is_instance_valid(target):
 		navigation_agent.target_position = minion.global_position
 		return
-		
-	navigation_agent.target_position = minion.target.navigation_point.global_position
+	
+	var target_position := minion.target.navigation_point.global_position
+	
+	var offset_x := randf_range(
+		minion.destination_offset_range_x.x,
+		minion.destination_offset_range_x.y
+	)
+	target_position.x += offset_x
+	
+	var offset_y := randf_range(
+		minion.destination_offset_range_y.x,
+		minion.destination_offset_range_y.y
+	)
+	target_position.y += offset_y
+	
+	navigation_agent.target_position = target_position
 
 ## Called when [AdvanceState] is entered.
 func enter() -> void:
 	minion.target_updated.connect(on_target_update)
-	on_target_update(minion.target)
+	
+	## There are circumstances where the advance state is entered and minion doesn't have
+	##	a target. This guard prevents unexpected behavior when this occurs.
+	if is_instance_valid(minion.target):
+		on_target_update(minion.target)
 
 ## Called when [AdvanceState] is exited.
 func exit() -> void:
@@ -39,6 +57,12 @@ func physics_update(_delta: float) -> void:
 			state_machine.set_state(attack_state)
 
 	var speed := minion.movement_speed
+	var speed_offset := randf_range(
+		speed - minion.speed_offset_range.x, 
+		speed + minion.speed_offset_range.y
+	)
+	speed += speed_offset
+	
 	var next_position := navigation_agent.get_next_path_position()
 	var direction := minion.global_position.direction_to(next_position)
 	minion.velocity = direction * speed
