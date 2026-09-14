@@ -12,13 +12,13 @@ extends State
 
 ## Executed when [signal Minion.target_updated] is emitted. Updates [member Minion.navigation_agent]'s 
 ##	[member NavigationAgent2D.target_position] to match the new target.
-func on_target_update(target: Node2D) -> void:
+func on_target_update(target: Defense) -> void:
 	## Fallback to the minion's current position to prevent movement to unexpected places.
 	if not is_instance_valid(target):
 		navigation_agent.target_position = minion.global_position
 		return
 		
-	navigation_agent.target_position = minion.target.global_position
+	navigation_agent.target_position = minion.target.navigation_point.global_position
 
 ## Called when [AdvanceState] is entered.
 func enter() -> void:

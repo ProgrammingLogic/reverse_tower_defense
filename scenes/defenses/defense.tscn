@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://xin687t7txar"]
+
+[ext_resource type="Script" uid="uid://cxscjmaa154sw" path="res://scenes/defenses/defense.gd" id="1_64mab"]
+[ext_resource type="PackedScene" uid="uid://brgcf1e0poj0w" path="res://components/ui/healthbar.tscn" id="2_5rfwt"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x0yqr"]
+size = Vector2(64, 64)
+
+[node name="Defense" type="Node2D" unique_id=1953356511]
+rotation = 0.0022805682
+script = ExtResource("1_64mab")
+max_health = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=481306170]
+scale = Vector2(1.0000001, 1.0000001)
+texture = SubResource("PlaceholderTexture2D_x0yqr")
+
+[node name="DefenseBounds" type="Control" parent="." unique_id=604967952]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Healthbar" parent="DefenseBounds" unique_id=877966019 instance=ExtResource("2_5rfwt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+offset_left = 1.9429855
+offset_top = -24.999939
+offset_right = -2.0570145
+offset_bottom = -8.999939
