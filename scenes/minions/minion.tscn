@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ckethcuhcs77b"]
+
+[ext_resource type="Script" uid="uid://b4kd5iy6bldoc" path="res://scenes/minions/minion.gd" id="1_yg3ha"]
+[ext_resource type="Texture2D" uid="uid://sxxyy3bahade" path="res://scenes/minions/skeleton.png" id="2_r2x4u"]
+[ext_resource type="Script" uid="uid://bnsmh8qngwdq7" path="res://components/state_machine.gd" id="3_182tw"]
+[ext_resource type="Script" uid="uid://bcqoj3jke71gu" path="res://scenes/minions/advance_state.gd" id="4_7llsn"]
+[ext_resource type="Script" uid="uid://dl7xj2fbxmxqg" path="res://components/state.gd" id="5_qjbbv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0yqr"]
+radius = 16.0
+height = 64.0
+
+[node name="Minion" type="CharacterBody2D" unique_id=1954159219]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_yg3ha")
+movement_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276902268]
+texture = ExtResource("2_r2x4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=669657283]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_x0yqr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1607181411]
+unique_name_in_owner = true
+target_desired_distance = 6.0
+path_postprocessing = 1
+simplify_path = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=884174885 node_paths=PackedStringArray("default_state")]
+unique_name_in_owner = true
+script = ExtResource("3_182tw")
+default_state = NodePath("AdvanceState")
+metadata/_custom_type_script = "uid://bnsmh8qngwdq7"
+
+[node name="AdvanceState" type="Node" parent="StateMachine" unique_id=1150361800 node_paths=PackedStringArray("minion")]
+script = ExtResource("4_7llsn")
+minion = NodePath("../..")
+metadata/_custom_type_script = "uid://dl7xj2fbxmxqg"
+
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=758063158]
+unique_name_in_owner = true
+script = ExtResource("5_qjbbv")
+metadata/_custom_type_script = "uid://dl7xj2fbxmxqg"
